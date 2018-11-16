@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Slider CountDown Clock</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container">
+    <div id="clock">
+      <span id="display-time">11:11:11</span>
+      <span id="milli-sec">00</span>
+      <div class="time-names">
+        <span>hour</span>
+        <span>min</span>
+        <span>sec</span>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;">
+      <input id="slider" type="range" value="0" min="0" max="100" step="1" onchange="showRangeVal(this.value)"  onmouseup="totalTime()">
+      <span class="range-slider__value" id="show-value">0</span>
+    </div>
+    <!-- onchange="showRangeVal(this.value)" *quarantine* --> 
+  </div>
+
+<script src="script.js"></script>
+</body>
+</html>
