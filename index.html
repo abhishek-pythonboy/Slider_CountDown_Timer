@@ -2,19 +2,26 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Slider CountDown Clock</title>
 
-  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <!-- <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400" rel="stylesheet"> -->
   <link rel="stylesheet" href="style.css">
+  <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script> <!-- live reload -->
 </head>
 
 <body>
   <div class="container">
     <div id="clock">
-      <span id="display-time">11:11:11</span>
-      <span id="milli-sec">00</span>
+      <div id="display-time">
+        <div id="hour">00</div>
+        <div class="tick-tock">:</div>
+        <div id="min">00</div>
+        <div class="tick-tock">:</div>
+        <div id="sec">00</div>
+        <div id="milli-sec">00</div>
+      </div>
       <div class="time-names">
         <span>hour</span>
         <span>min</span>
@@ -22,10 +29,10 @@
       </div>
     </div>
     <div style="display:flex;align-items:center;">
-      <input id="slider" type="range" value="0" min="0" max="100" step="1" onchange="showRangeVal(this.value)"  onmouseup="totalTime()">
-      <span class="range-slider__value" id="show-value">0</span>
+      <input id="slider" type="range" value="0" min="0" max="1000" step="1" oninput="windClock(this.value)"  >
+      <!-- <span class="range-slider__value" id="show-value">0</span> -->
+<!--       don't need the range value showing feature anymore -->
     </div>
-    <!-- onchange="showRangeVal(this.value)" *quarantine* --> 
   </div>
 
 <script src="script.js"></script>

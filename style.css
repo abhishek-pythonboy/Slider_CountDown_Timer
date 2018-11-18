@@ -1,31 +1,95 @@
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: /* 'Montserrat', */ roboto, sans-serif;
+  font-weight: 300;
+  background:
+  radial-gradient(black 15%, transparent 16%) 0 0,
+  radial-gradient(black 15%, transparent 16%) 8px 8px,
+  radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
+  radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
+  background-color:#282828;
+  background-size:16px 16px;
+  color: #f1f1f1;
 }
 
 .container {
+  width: 70%;
   padding: 50px;
+  margin: 0 auto;
 }
 
 #clock {
+  margin: 0 auto;
+  margin-top: 150px;
+  margin-bottom: 70px;
   width: 100%;
   height: 150px;
   text-align:center;
+  text-align: center;
+}
+
+#clock * {
+  text-shadow: 1px 1px 10px #222;
+
 }
 
 #display-time {
   font-size:6em;
   line-height:1em;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  width: 550px;
+  margin: 0 auto;
+}
+/*  animation for timer */
+@-moz-keyframes FadeIn {
+  from {color: #FFCD55;}
+  to {color: #777;}
+}
+@-webkit-keyframes FadeIn {
+  from {color: #FFCD55;}
+  to {color: #777;}
+}
+@keyframes FadeIn {
+  from {color: #FFCD55;}
+  to {color: #777;}
 }
 
+/* animation for time up */
+@-moz-keyframes TimeUp {
+  from {color: #FF5555;}
+  to {color: #777;}
+}
+@-webkit-keyframes TimeUp {
+  from {color: #FF5555;}
+  to {color: #777;}
+}
+@keyframes TimeUp {
+  from {color: #FF5555;}
+  to {color: #777;}
+}
+
+#hour, #min, #sec{
+  min-width: 150px;
+  padding: 10px;
+}
+
+
 #milli-sec {
-  position: absolute;
-  top:68px;
-  font-size:1.2em;
+  font-size:.5em;
+  min-width: 80px;
+  color: #999;
+  opacity: 0.5;
+  position: relative;
+  bottom: 7px;
+  right: 10px;
 }
 
 .time-names {
   margin: 0 auto;
-  width: 210px;
+  width: 415px;
   display: flex;
   justify-content:space-between;
 }
@@ -51,7 +115,7 @@ body {
     appearance: none;
     width: 25px; /* Set a specific slider handle width */
     height: 25px; /* Slider handle height */
-    background: #4CAF50; /* Green background */
+    background: #4CACAF; /* Green background */
     cursor: pointer; /* Cursor on hover */
     border-radius:50%;
 }
@@ -59,7 +123,7 @@ body {
 #slider::-moz-range-thumb {
     width: 25px; /* Set a specific slider handle width */
     height: 25px; /* Slider handle height */
-    background: #4CAF50; /* Green background */
+    background: #4CACAF; /* Green background */
     cursor: pointer; /* Cursor on hover */
     border-radius:50%;
 }
