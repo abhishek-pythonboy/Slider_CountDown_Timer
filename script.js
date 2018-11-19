@@ -9,13 +9,12 @@ let displayMillisec = document.getElementById("milli-sec");
 let displayTickTock = document.getElementsByClassName("tick-tock");
 const d = new Date();
 	
-
+let sliderPos;
 // takes input from range and dynamically shows in clock
 function windClock(that) {
-
   // for the range value showing div, not required anymore
   //showVal.innerHTML = that;
-  
+  sliderPos = that;
   // only need to set second, it will auto increase minutes and hours
   d.setHours(0);
   d.setMinutes(0);
@@ -34,8 +33,6 @@ function windClock(that) {
 
 // runs after winding is done
 function startTimer() {
-
-
 
     displayHour.innerHTML = "";
     displayMin.innerHTML = "";
@@ -59,9 +56,9 @@ function startTimer() {
         slider.value -= 1;
     // decremenet seconds by 1
 
-    } else {
+    } else if (slider.value == 0) {
 
-      
+      console.log(slider.value);
       displayHour.innerHTML = "TI";
       displayMin.innerHTML = "ME";
       displaySec.innerHTML = "UP";
@@ -76,6 +73,10 @@ function startTimer() {
         displayTickTock[j].style.animation = "TimeUp 1000ms 5 linear 0s";
       }
       return false; // stop execution
+    } else {
+      displayHour.innerHTML = "00";
+      displayMin.innerHTML = "00";
+      displaySec.innerHTML = "00";
     }
 
   
@@ -113,12 +114,15 @@ slider.addEventListener("touchstart", () => {
   // start clock after mouse/touch is up
 slider.addEventListener("mouseup", () => {
   // init startTimer() once, then onPointerUp() takes control
-  startTimer();
+  // if slider has been dragged left, don't init
+  if(slider.value>0) {startTimer()};
   onPointerUp();
 });
 slider.addEventListener("touchend", () => {
   // init startTimer() once, then onPointerUp() takes control
-  startTimer();
+  // if slider has been dragged left, don't init
+  if(slider.value>0) {startTimer()};
+
   onPointerUp();
 });
 
@@ -129,7 +133,7 @@ function onPointerUp() {
 
     // start blinking animation
     for (let j = 0; j < displayTickTock.length; j++) {
-    displayTickTock[j].style.animation = "FadeIn 1000ms infinite linear 0s";
+    displayTickTock[j].style.animation = "TickTock 1000ms infinite linear 0s";
     }
     startTimerInterval = setInterval(startTimer, 1000);
     // reset millisec iteration
